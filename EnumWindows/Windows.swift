@@ -1,6 +1,6 @@
 import Foundation
 
-class WindowInfoDict : Searchable, ProcessNameProtocol {
+class WindowInfoDict : ProcessNameProtocol {
     private let windowInfoDict : Dictionary<NSObject, AnyObject>;
     
     init(rawDict : UnsafeRawPointer) {
@@ -66,10 +66,6 @@ class WindowInfoDict : Searchable, ProcessNameProtocol {
         return "\(self.processName)-\(self.name)".hashValue
     }
     
-    var searchStrings: [String] {
-        return [self.processName, self.name]
-    }
-    
     var isProbablyMenubarItem : Bool {
         // Our best guess, if it's very small and attached to the top of the screen, it is probably something
         // related to the menubar
@@ -84,7 +80,7 @@ class WindowInfoDict : Searchable, ProcessNameProtocol {
 struct Windows {
     static var any : WindowInfoDict? {
         get {
-            guard let wl = CGWindowListCopyWindowInfo([.optionOnScreenOnly, .excludeDesktopElements], kCGNullWindowID) else {
+            guard let wl = CGWindowListCopyWindowInfo([.optionAll], kCGNullWindowID) else {
                 return nil
             }
 
@@ -101,22 +97,22 @@ struct Windows {
 
     static var all : [WindowInfoDict] {
         get {
-            guard let wl = CGWindowListCopyWindowInfo([.optionOnScreenOnly, .excludeDesktopElements], kCGNullWindowID) else {
+            guard let wl = CGWindowListCopyWindowInfo([.excludeDesktopElements], kCGNullWindowID) else {
                 return []
             }
-            
             return (0..<CFArrayGetCount(wl)).flatMap { (i : Int) -> [WindowInfoDict] in
+                
                 guard let windowInfoRef = CFArrayGetValueAtIndex(wl, i) else {
                     return []
                 }
                 
+                // remap info
                 let wi = WindowInfoDict(rawDict: windowInfoRef)
                 
                 // We don't want to clutter our output with unnecessary windows that we can't switch to anyway.
-                guard wi.name.characters.count > 0 && !wi.isProbablyMenubarItem && wi.isVisible else {
+                if wi.name.count == 0 || wi.isProbablyMenubarItem || !wi.isVisible {
                     return []
                 }
-                
                 return [wi]
             }
         }

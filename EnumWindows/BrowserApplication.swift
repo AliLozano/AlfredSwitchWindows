@@ -6,8 +6,9 @@ protocol BrowserEntity {
     var rawItem : AnyObject { get }
 }
 
-protocol BrowserNamedEntity : BrowserEntity {
+protocol BrowserNamedEntity  {
     var title : String { get }
+    func getTitle() -> String
 }
 
 extension BrowserEntity {
@@ -19,7 +20,7 @@ extension BrowserEntity {
 
         let selectorResult = self.rawItem.perform(sel)
 
-        guard let retainedValue = selectorResult?.takeRetainedValue() else {
+        guard let retainedValue = selectorResult?.takeUnretainedValue() else {
             return defaultValue
         }
         
@@ -31,32 +32,37 @@ extension BrowserEntity {
     }
 }
 
-class BrowserTab : BrowserNamedEntity, Searchable, ProcessNameProtocol {
+class BrowserTab : BrowserNamedEntity, ProcessNameProtocol, BrowserEntity{
     private let tabRaw : AnyObject
     private let index : Int?
     
     let windowTitle : String
     let processName : String
     
+    var title: String = ""
+    var url: String = ""
+    
     init(raw: AnyObject, index: Int?, windowTitle: String, processName: String) {
         tabRaw = raw
         self.index = index
         self.windowTitle = windowTitle
         self.processName = processName
+        self.title = "" //self.getTitle();
+        self.url = self.getUrl();
     }
     
     var rawItem: AnyObject {
         return self.tabRaw
     }
         
-    var url : String {
+    internal func getUrl() -> String {
         return performSelectorByName(name: "URL", defaultValue: "")
     }
 
-    var title : String {
+    internal func getTitle() -> String{
         /* Safari uses 'name' as the tab title, while most of the browsers have 'title' there */
-        if self.rawItem.responds(to: Selector("name")) {
-            return performSelectorByName(name: "name", defaultValue: "")
+        if let it: String = performSelectorByName(name: "name", defaultValue: nil) {
+          return it
         }
         return performSelectorByName(name: "title", defaultValue: "")
     }
@@ -68,9 +74,6 @@ class BrowserTab : BrowserNamedEntity, Searchable, ProcessNameProtocol {
         return i
     }
     
-    var searchStrings : [String] {
-        return ["Browser", self.url, self.title, self.processName]
-    }
     
     /*
      (lldb) po raw.perform("URL").takeRetainedValue()
@@ -83,32 +86,30 @@ class BrowserTab : BrowserNamedEntity, Searchable, ProcessNameProtocol {
 }
 
 class iTermTab : BrowserTab {
-    override var title : String {
-        guard self.rawItem.responds(to: Selector("currentSession")),
-            let session: AnyObject = performSelectorByName(name: "currentSession", defaultValue: nil),
-            session.responds(to: Selector("name"))
-        else {
-            return self.windowTitle
+    override internal func getTitle() -> String {
+        if let title: String = performSelectorByName(name: "currentSession", defaultValue: nil) {
+            return title
         }
-
-        let selectorResult = session.perform(Selector("name"))
-        guard let retainedValue = selectorResult?.takeRetainedValue(),
-            let tabName = retainedValue as? String
-        else {
-            return self.windowTitle
+        
+        if let title: String = performSelectorByName(name: "name", defaultValue: nil) {
+            return title
         }
-        return tabName
+        return self.windowTitle
     }
 }
 
-class BrowserWindow : BrowserNamedEntity {
+class BrowserWindow : BrowserNamedEntity, BrowserEntity {
+    
     private let windowRaw : AnyObject
     
     let processName : String
     
+    var title: String = ""
+    
     init(raw: AnyObject, processName: String) {
         windowRaw = raw
         self.processName = processName
+        self.title = self.getTitle()
     }
     
     var rawItem: AnyObject {
@@ -118,18 +119,18 @@ class BrowserWindow : BrowserNamedEntity {
     var tabs : [BrowserTab] {
         let result = performSelectorByName(name: "tabs", defaultValue: [AnyObject]())
         
-        return result.enumerated().map { (index, element) in
-            if processName == "iTerm" {
-                return iTermTab(raw: element, index: index + 1, windowTitle: self.title, processName: self.processName)
+        return result.concurrentMap { (element, idx) in
+            if self.processName == "iTerm" {
+                return iTermTab(raw: element, index: idx + 1, windowTitle: self.title, processName: self.processName)
             }
-            return BrowserTab(raw: element, index: index + 1, windowTitle: self.title, processName: self.processName)
+            return BrowserTab(raw: element, index: idx + 1, windowTitle: self.title, processName: self.processName)
         }
     }
 
-    var title : String {
+    func getTitle() -> String {
         /* Safari uses 'name' as the tab title, while most of the browsers have 'title' there */
-        if self.rawItem.responds(to: Selector("name")) {
-            return performSelectorByName(name: "name", defaultValue: "")
+        if let it: String = performSelectorByName(name: "name", defaultValue: nil) {
+          return it
         }
         return performSelectorByName(name: "title", defaultValue: "")
     }
@@ -177,7 +178,7 @@ class BrowserApplication : BrowserEntity {
     
     var windows : [BrowserWindow] {
         let result = performSelectorByName(name: "windows", defaultValue: [AnyObject]())
-        return result.map {
+        return result.concurrentMap {
             return BrowserWindow(raw: $0, processName: self.processName)
         }
     }
