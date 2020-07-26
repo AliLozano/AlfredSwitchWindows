@@ -47,7 +47,7 @@ class BrowserTab : BrowserNamedEntity, ProcessNameProtocol, BrowserEntity{
         self.index = index
         self.windowTitle = windowTitle
         self.processName = processName
-        self.title = "" //self.getTitle();
+        self.title = self.getTitle();
         self.url = self.getUrl();
     }
     

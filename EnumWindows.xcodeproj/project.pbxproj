@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41D343ED24CA465E006A6383 /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D343EC24CA465E006A6383 /* Permissions.swift */; };
+		41D343F024CA52A5006A6383 /* WindowsSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D343EF24CA52A5006A6383 /* WindowsSearcher.swift */; };
+		41D343F224CA52C9006A6383 /* TabsSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D343F124CA52C9006A6383 /* TabsSearcher.swift */; };
+		41D343F824CA69C6006A6383 /* AlfredExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D343F724CA69C6006A6383 /* AlfredExport.swift */; };
+		41D343FA24CA701E006A6383 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D343F924CA701E006A6383 /* Utils.swift */; };
+		41D3443824CD380C006A6383 /* ArraySafeThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3443724CD380C006A6383 /* ArraySafeThread.swift */; };
 		7439217F1E5DE92100720BFB /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7439217E1E5DE92100720BFB /* AppIcon.swift */; };
 		743921811E5DEDF100720BFB /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 743921801E5DEDF100720BFB /* AppKit.framework */; };
 		74466BA51E5760FB0032382F /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74466BA41E5760FB0032382F /* ScriptingBridge.framework */; };
@@ -14,8 +20,7 @@
 		744970C41E5397C60088C63C /* Windows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744970C31E5397C60088C63C /* Windows.swift */; };
 		744970C61E5397F30088C63C /* Alfred.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744970C51E5397F30088C63C /* Alfred.swift */; };
 		744970C81E53981F0088C63C /* AlfredItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744970C71E53981F0088C63C /* AlfredItems.swift */; };
-		744970CA1E5398C30088C63C /* CommandLine+EnumWindows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744970C91E5398C30088C63C /* CommandLine+EnumWindows.swift */; };
-		744970CC1E5398E90088C63C /* Array+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744970CB1E5398E90088C63C /* Array+Search.swift */; };
+		744970CA1E5398C30088C63C /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744970C91E5398C30088C63C /* CommandLine.swift */; };
 		74BA9E3E1E53270300C78C58 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BA9E3D1E53270300C78C58 /* main.swift */; };
 		74FFC9621E98E7AA00EAA0FA /* ProcessNameProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FFC9611E98E7AA00EAA0FA /* ProcessNameProtocol.swift */; };
 /* End PBXBuildFile section */
@@ -33,6 +38,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		41D343EC24CA465E006A6383 /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
+		41D343EF24CA52A5006A6383 /* WindowsSearcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowsSearcher.swift; sourceTree = "<group>"; };
+		41D343F124CA52C9006A6383 /* TabsSearcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsSearcher.swift; sourceTree = "<group>"; };
+		41D343F724CA69C6006A6383 /* AlfredExport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlfredExport.swift; path = ../../../.Trash/AlfredExport.swift; sourceTree = "<group>"; };
+		41D343F924CA701E006A6383 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		41D3443724CD380C006A6383 /* ArraySafeThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraySafeThread.swift; sourceTree = "<group>"; };
 		74236E301E5CBBEC007B6F1F /* AlfredWorkflow */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AlfredWorkflow; sourceTree = "<group>"; };
 		7439217E1E5DE92100720BFB /* AppIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
 		743921801E5DEDF100720BFB /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -41,8 +52,7 @@
 		744970C31E5397C60088C63C /* Windows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Windows.swift; sourceTree = "<group>"; };
 		744970C51E5397F30088C63C /* Alfred.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alfred.swift; sourceTree = "<group>"; };
 		744970C71E53981F0088C63C /* AlfredItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlfredItems.swift; sourceTree = "<group>"; };
-		744970C91E5398C30088C63C /* CommandLine+EnumWindows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CommandLine+EnumWindows.swift"; sourceTree = "<group>"; };
-		744970CB1E5398E90088C63C /* Array+Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Search.swift"; sourceTree = "<group>"; };
+		744970C91E5398C30088C63C /* CommandLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
 		74BA9E3A1E53270300C78C58 /* EnumWindows */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EnumWindows; sourceTree = BUILT_PRODUCTS_DIR; };
 		74BA9E3D1E53270300C78C58 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		74FFC9611E98E7AA00EAA0FA /* ProcessNameProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessNameProtocol.swift; sourceTree = "<group>"; };
@@ -61,12 +71,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7423A40E1E5F7BCD009F5325 /* AppsSupport */ = {
+		41D343EE24CA527C006A6383 /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				744970C31E5397C60088C63C /* Windows.swift */,
+				7439217E1E5DE92100720BFB /* AppIcon.swift */,
+				74FFC9611E98E7AA00EAA0FA /* ProcessNameProtocol.swift */,
+				41D343EF24CA52A5006A6383 /* WindowsSearcher.swift */,
+			);
+			name = Windows;
+			sourceTree = "<group>";
+		};
+		41D343F324CA52EB006A6383 /* Alfred */ = {
+			isa = PBXGroup;
+			children = (
+				41D343F724CA69C6006A6383 /* AlfredExport.swift */,
+				744970C71E53981F0088C63C /* AlfredItems.swift */,
+				744970C51E5397F30088C63C /* Alfred.swift */,
+			);
+			name = Alfred;
+			sourceTree = "<group>";
+		};
+		41D343F424CA56F6006A6383 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
 				74466BA61E5761F90032382F /* BrowserApplication.swift */,
+				41D343F124CA52C9006A6383 /* TabsSearcher.swift */,
 			);
-			name = AppsSupport;
+			name = Tabs;
 			sourceTree = "<group>";
 		};
 		74466BA31E5760FB0032382F /* Frameworks */ = {
@@ -99,15 +131,14 @@
 		74BA9E3C1E53270300C78C58 /* EnumWindows */ = {
 			isa = PBXGroup;
 			children = (
-				7423A40E1E5F7BCD009F5325 /* AppsSupport */,
+				41D343F424CA56F6006A6383 /* Tabs */,
+				41D343F324CA52EB006A6383 /* Alfred */,
+				41D343EE24CA527C006A6383 /* Windows */,
 				74BA9E3D1E53270300C78C58 /* main.swift */,
-				744970C51E5397F30088C63C /* Alfred.swift */,
-				744970CB1E5398E90088C63C /* Array+Search.swift */,
-				744970C91E5398C30088C63C /* CommandLine+EnumWindows.swift */,
-				744970C31E5397C60088C63C /* Windows.swift */,
-				744970C71E53981F0088C63C /* AlfredItems.swift */,
-				7439217E1E5DE92100720BFB /* AppIcon.swift */,
-				74FFC9611E98E7AA00EAA0FA /* ProcessNameProtocol.swift */,
+				744970C91E5398C30088C63C /* CommandLine.swift */,
+				41D343EC24CA465E006A6383 /* Permissions.swift */,
+				41D343F924CA701E006A6383 /* Utils.swift */,
+				41D3443724CD380C006A6383 /* ArraySafeThread.swift */,
 			);
 			path = EnumWindows;
 			sourceTree = "<group>";
@@ -139,24 +170,24 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = "Igor Mandrigin";
 				TargetAttributes = {
 					74BA9E391E53270300C78C58 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = LADJFGFXHV;
-						LastSwiftMigration = 1010;
+						DevelopmentTeam = 9FV78R48G8;
+						LastSwiftMigration = 1160;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = 74BA9E351E53270300C78C58 /* Build configuration list for PBXProject "EnumWindows" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
+				Base,
 			);
 			mainGroup = 74BA9E311E53270300C78C58;
 			productRefGroup = 74BA9E3B1E53270300C78C58 /* Products */;
@@ -173,12 +204,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				744970CA1E5398C30088C63C /* CommandLine+EnumWindows.swift in Sources */,
-				744970CC1E5398E90088C63C /* Array+Search.swift in Sources */,
+				41D343F024CA52A5006A6383 /* WindowsSearcher.swift in Sources */,
+				744970CA1E5398C30088C63C /* CommandLine.swift in Sources */,
 				744970C61E5397F30088C63C /* Alfred.swift in Sources */,
 				74BA9E3E1E53270300C78C58 /* main.swift in Sources */,
 				74466BA71E5761F90032382F /* BrowserApplication.swift in Sources */,
+				41D343FA24CA701E006A6383 /* Utils.swift in Sources */,
+				41D343F824CA69C6006A6383 /* AlfredExport.swift in Sources */,
+				41D343F224CA52C9006A6383 /* TabsSearcher.swift in Sources */,
+				41D3443824CD380C006A6383 /* ArraySafeThread.swift in Sources */,
 				744970C81E53981F0088C63C /* AlfredItems.swift in Sources */,
+				41D343ED24CA465E006A6383 /* Permissions.swift in Sources */,
 				7439217F1E5DE92100720BFB /* AppIcon.swift in Sources */,
 				744970C41E5397C60088C63C /* Windows.swift in Sources */,
 				74FFC9621E98E7AA00EAA0FA /* ProcessNameProtocol.swift in Sources */,
@@ -197,15 +233,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -246,15 +290,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -273,6 +325,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 			};
@@ -282,11 +335,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				DEVELOPMENT_TEAM = LADJFGFXHV;
+				DEVELOPMENT_TEAM = 9FV78R48G8;
+				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.mandrigin.EnumWindows;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -294,11 +348,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				DEVELOPMENT_TEAM = LADJFGFXHV;
+				DEVELOPMENT_TEAM = 9FV78R48G8;
+				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.mandrigin.EnumWindows;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
